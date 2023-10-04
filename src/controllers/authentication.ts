@@ -1,5 +1,5 @@
 import express, { response } from 'express';
-import { getUserByEmail, createUser } from '../db/users';
+import { getUserByEmail, createUser, getUserBySessionToken } from '../db/users';
 import { random, authentication } from '../helpers';
 
 export const login = async (req: express.Request, res: express.Response) => {
@@ -25,6 +25,23 @@ export const login = async (req: express.Request, res: express.Response) => {
     return res.status(200).send(user).end();
   } catch (err) {
     console.log(err);
+    return res.sendStatus(400);
+  }
+};
+
+export const findUserBySessionId = async (req: express.Request, res: express.Response) => {
+  try {
+    const { sessionToken } = req.body;
+    if (!sessionToken) {
+      return res.sendStatus(400);
+    }
+    const user = await getUserBySessionToken(sessionToken);
+    if (!user) {
+      return res.sendStatus(400);
+    }
+    return res.status(200).send(user).end();
+  } catch (error) {
+    console.log(error);
     return res.sendStatus(400);
   }
 };
