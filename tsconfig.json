@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "node",
+    "target": "ES2016",
+    "module": "CommonJS",
     "baseUrl": "src",
-    "outDir": "dist",
+    "outDir": "./build",
     "sourceMap": true,
     "noImplicitAny": true
   },
