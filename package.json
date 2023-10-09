@@ -5,9 +5,13 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "node build/index.js",
-    "postinsall": "tsc"
+    "build": "tsc",
+    "postinstall": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -21,6 +25,9 @@
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": "18.12.1"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
